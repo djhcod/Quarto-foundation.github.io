@@ -1,6 +1,6 @@
 ---
-title: Quarto基础
-subtitle: 面向多编程语言的下一代Markdown编辑器
+title: Quarto学习笔记
+subtitle: 面向多编程语言的新一代R Markdown
 author: 杜俊宏
 date: 2023/11/10
 date-modified: now
@@ -15,7 +15,7 @@ execute:
 crossref:
   fig-title: 图     # 图的默认标签（默认是"Figure"）
   tbl-title: 表     # 表的默认标签（默认是"Table"）
-  title-delim: "—"   # “图/表”和后面的标题之间的连接符（默认是":"）
+  title-delim: "："   # “图/表”和后面的标题之间的连接符（默认是":"）
   fig-prefix: 图   # 图的默认引用样式（默认是"Figure"）
   tbl-prefix: 表    # 表的默认引用样式（默认是"Table"）
   sec-prefix: 章节 # 章节的默认引用样式（默认是“Section”）
@@ -25,35 +25,48 @@ crossref:
   subref-labels: alpha A # 次级引用编号类型，如组图中的小图（默认是小写字母：alpha a）
 fig-cap-location: bottom
 tbl-cap-location: top
-reference-location: margin # 脚注的默认展示位置。默认为文档最后。
-citation-location: margin # 参考文献的默认展示位置。默认为文档最后。 
+reference-location: margin # 脚注的默认展示位置。默认为文档最后 (document)。
+citation-location: document # 参考文献的默认展示位置。默认为文档最后。 
 format: 
   html:
     theme: 
       light: flatly # 亮色主题。常用主题：Cosmo、Flatly和Darkly
       dark: darkly # 暗色主题。
-    embed-resources: true # 是否将所有源文件嵌入HTML文件
+    embed-resources: false # 是否将所有源文件嵌入HTML文件
     code-tools: true
     title-block-banner: images/banner.jpg # 设置标题栏的横幅背景
     title-block-banner-color: "black"
     toc: true
     toc-title: 目录
     toc-location: left
-    toc-depth: 3
-    toc-expand: 2
+    toc-depth: 2
+    toc-expand: 1
     number-sections: true
     number-depth: 3
     anchor-sections: true
     link-external-icon: true
     link-external-newwindow: true
     df-print: kable # 表格输出样式
+  gfm:
+    identifier-prefix: readme # 标识符
+    # preview-mode: raw # 查看原始markdown
+    keep-yaml: true
+    toc: true
+    toc-depth: 1
+    number-sections: true
+    citation-location: document
+    output-file: "README.md" # 输出文档的文件名
 editor: visual
-bibliography: references.bib
+bibliography: references.bib # 参考文献目录
 ---
+
+**本教程网址：<https://djhcod.github.io/Quarto-foundation.github.io/>。**
 
 # 前言
 
-Quarto是一个支持多种编程语言的新一代R Markdown，拥有数十个新的特性和功能，同时能够兼容和渲染大多数现有的RMD文件，而无需额外修改。Quarto主要由三大部分组成：metadata, text, 和 code。其中metadata是文档开头写在"\-\--"之间的句子，它采用的是[YAML语法](https://en.wikipedia.org/wiki/YAML)，所以有时候也别叫做YAML metadata 或者 the YAML frontmatter。YAML定义了Quarto的性质，比如title、author、date、指定output文件类型等。在YAML metadata中采用正确的缩进十分重要。
+Quarto是一个支持多种编程语言的新一代R Markdown，拥有数十个新的特性和功能，同时能够兼容和渲染大多数现有的RMD文件，而无需额外修改。目前，Quarto还处于起步和不断发展的阶段，针对其的学习资源还十分有限，尤其是中文资源更加匮乏，因此才有了汇总和编写这篇学习笔记的动机。这篇学习笔记主要参考了[Quarto的官方指南](https://quarto.org)，并提取了其中我认为在将来的编写中会经常使用的技巧并加以汇总。这篇文档即全程采用Quarto编写。
+
+Quarto主要由三大部分组成：metadata, text, 和 code。其中metadata是文档开头写在"\-\--"之间的句子，它采用的是[YAML语法](https://en.wikipedia.org/wiki/YAML)，所以有时候也别叫做YAML metadata 或者 the YAML frontmatter。YAML定义了Quarto的性质，比如title、author、date、指定output文件类型等。在YAML metadata中采用正确的缩进十分重要。
 
 ::: {.callout-note appearance="simple"}
 有关Quarto的详细信息，参考：<https://quarto.org>.
@@ -97,7 +110,7 @@ title-block-banner-color: "black"
 
 ## 更改日期格式
 
-通过`date`添加文档的发行日期，通过`date-modified`添加文档的修改日期，通过`date-format`修改日期格式。其中，`date`的默认标签为\"PUBLISHED DATE\"，可以通过`published-title`来修改默认标签，如：`published-title: 写作日期`。下面是一个典型的日期定义语法：
+通过`date`添加文档的发行日期，通过`date-modified`添加文档的修改日期，通过`date-format`修改日期格式。其中，`date`的默认标签为"PUBLISHED DATE"，可以通过`published-title`来修改默认标签，如：`published-title: 写作日期`。下面是一个典型的日期定义语法：
 
 ```{r}
 {r}
@@ -545,7 +558,7 @@ Div块的图像排版基本语法如下：
 ::: {#fig-demo layout-ncol="2"}
 ![](images/截屏2023-11-09%2009.39.02.png){width="240"}
 
-![](images/截屏2023-11-09%2009.39.13-01-01.png){width="244"}
+![](images/截屏2023-11-09%2009.39.13-01.png){width="244"}
 
 交叉引用的设置
 :::
@@ -669,7 +682,7 @@ citation-location: margin
 ---
 ```
 
-可用的值参见 @tbl-设置图表的标题 。这份文档的参考文献就设置为了在页面右侧（margin）展示。
+可用的值参见 @tbl-设置图表的标题 。这份文档的参考文献就设置为了在页面最后展示（`citation-location: document`）。
 
 ::: callout-note
 关于参考文献和脚注的详细指南，参考：<https://quarto.org/docs/authoring/footnotes-and-citations.html>。
@@ -844,6 +857,26 @@ number-depth: 3
 
 -   link-external-newwindow：是否在新标签页打开外部链接。
 
+## GitHub Flavored Markdown（GFM）格式输出 {#sec-github-markdown}
+
+我们可以将Quarto文档转换为GitHub风格的Markdown文档（GitHub Flavored Markdown，GFM）。这可以用来生成GitHub项目的README.md文档。比如我这里直接将这个Quarto文档教程完整转换成了GitHub风格的markdown文件：
+
+```{r}
+---
+title: "My Project"
+format: 
+  gfm:
+    identifier-prefix: readme # 标识符
+    # preview-mode: raw # 查看原始markdown
+    keep-yaml: true
+    toc: true
+    toc-depth: 1
+    number-sections: true
+    citation-location: document
+    output-file: "README.md" # 输出文档的文件名
+---
+```
+
 ## PDF输出
 
 如果要在rmarkdown、bookdown中使用PDF输出功能， 可以在在R中安装tinytex扩展包并安装TinyTeX编译软件：
@@ -866,3 +899,53 @@ tinytex::is_tinytex()
 结果应为`TRUE`, 出错或者结果为`FALSE`都说明安装不成功。
 
 当用户使用RMarkdown和tinytex包转换latex并编译为PDF时， 如果缺少某些latex宏包， tinytex会自动安装缺少的宏包。
+
+# 发布到GitHub Pages
+
+我们可以将我们的Quarto文档编译的HTML文档发布到GitHub Pages中形成一个可以被其他人访问的网页。下面是具体实现方法。
+
+1.  在GitHub首页创建一个新的仓库。
+
+    ![](images/截屏2023-11-11 23.34.04.png)
+
+2.  给这个仓库起个名字。![](images/截屏2023-11-12 16.11.11.png)
+
+    ::: callout-caution
+    为了使这个项目能够创建网页，仓库的名字的后缀必须是\".github.io\"。
+    :::
+
+3.  添加仓库的描述，这些描述会被添加到README.md文档中，选择仓库的权限为公开，创建README文件，并选择一个license。
+
+    ![](images/截屏2023-11-11 23.36.31.png)
+
+4.  现在，我们就可以看到这个仓库就被建立了，我们们勾选的README文档和license文档出现在列表中。然后我们点击设置按钮。
+
+    ![](images/截屏2023-11-11 23.36.48.png)
+
+5.  点击左侧导航栏的\"Pages\"选项，然后将我们的GitHub Pages的创建来源选择为根目录。
+
+    ![](images/截屏2023-11-11 23.37.51.png)
+
+6.  现在我们就可以开始上传文件了。
+
+    ![](images/截屏2023-11-11 23.46.08.png)
+
+7.  需要上传的的文件至少应该包括包括一个HTML文件（文件名为index.html）和一个HTML的资源文件夹（一般我们在Quarto中编译后为一个名称为\"\_files"的文件夹）
+
+    ![](images/截屏2023-11-12 16.24.38.png)
+
+    ::: callout-caution
+    -   HTML文件的文件名必须为index.html，这样GItHub Pages才能识别这是一个用于构建网页的HTML文件。
+
+    -   用Quarto编译HTML文件后，会在根目录生成一个文件名为为\"Quarto文档的文件_files"的文件夹，这个就是HTML的资源文件。
+    :::
+
+8.  上传完文件等待一段时间后，就可以在pages的设置页面看到我们的网站已经就绪了。
+
+    ![](images/截屏2023-11-11 23.49.59-01.png)
+
+9.  点击这个网址即可访问我们建立的网页。
+
+    ![](images/截屏2023-11-11 23.56.01.png)
+
+10. 下一步我们可以通过 @sec-github-markdown 中的方法来创建一个更详细的README文件，这个文件最终会展示在GitHub仓库的首页上。我这里直接将这个完整的教程转换成了GitHub风格的markdown文件。
