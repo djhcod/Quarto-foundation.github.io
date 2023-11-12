@@ -4,7 +4,6 @@
 
 # 前言
 
-<<<<<<< HEAD
 Quarto是一个支持多种编程语言的新一代R
 Markdown，拥有数十个新的特性和功能，同时能够兼容和渲染大多数现有的RMD文件，而无需额外修改。Quarto主要由三大部分组成：metadata,
 text, 和
