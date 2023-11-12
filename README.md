@@ -1,12 +1,32 @@
-# Quarto基础
+# Quarto学习笔记
 杜俊宏
 2023年11月10日 00:00
+
+- [<span class="toc-section-number">1</span> 前言](#前言)
+- [<span class="toc-section-number">2</span> 快捷键](#快捷键)
+- [<span class="toc-section-number">3</span>
+  页面样式设置](#页面样式设置)
+- [<span class="toc-section-number">4</span> 代码块设置](#代码块设置)
+- [<span class="toc-section-number">5</span> 图片设置](#sec-图片设置)
+- [<span class="toc-section-number">6</span> 交叉引用](#sec-交叉引用)
+- [<span class="toc-section-number">7</span>
+  插入参考文献](#插入参考文献)
+- [<span class="toc-section-number">8</span>
+  插入Callouts](#插入callouts)
+- [<span class="toc-section-number">9</span>
+  插入在线视频](#插入在线视频)
+- [<span class="toc-section-number">10</span> 输出](#输出)
+- [<span class="toc-section-number">11</span> 发布到GitHub
+  Pages](#发布到github-pages)
+
+**本教程网址：<https://djhcod.github.io/Quarto-foundation.github.io/>。**
 
 # 前言
 
 Quarto是一个支持多种编程语言的新一代R
-Markdown，拥有数十个新的特性和功能，同时能够兼容和渲染大多数现有的RMD文件，而无需额外修改。Quarto主要由三大部分组成：metadata,
-text, 和
+Markdown，拥有数十个新的特性和功能，同时能够兼容和渲染大多数现有的RMD文件，而无需额外修改。目前，Quarto还处于起步和不断发展的阶段，针对其的学习资源还十分有限，尤其是中文资源更加匮乏，因此才有了汇总和编写这篇学习笔记的动机。这篇学习笔记主要参考了[Quarto的官方指南](https://quarto.org)，并提取了其中我认为在将来的编写中会经常使用的技巧并加以汇总。这篇文档即全程采用Quarto编写。
+
+Quarto主要由三大部分组成：metadata, text, 和
 code。其中metadata是文档开头写在”---“之间的句子，它采用的是[YAML语法](https://en.wikipedia.org/wiki/YAML)，所以有时候也别叫做YAML
 metadata 或者 the YAML
 frontmatter。YAML定义了Quarto的性质，比如title、author、date、指定output文件类型等。在YAML
@@ -94,7 +114,7 @@ date-format: "YYYY[年]M[月]D[日] HH:mm"
 | `now`           | 2023年11月11日 19:01                                                   |
 | `last-modified` | The last modified date and time of the input file containing the date. |
 
-表 1— 自动生成日期
+表 1： 自动生成日期
 
 </div>
 
@@ -110,7 +130,7 @@ date-format: "YYYY[年]M[月]D[日] HH:mm"
 | `short`  | A short date with a numeric month           | 3/7/05                |
 | `iso`    | A short date in ISO format                  | 2005-03-07            |
 
-表 2— 定义日期格式
+表 2： 定义日期格式
 
 </div>
 
@@ -146,7 +166,7 @@ date-format: "YYYY[年]M[月]D[日] HH:mm"
 | `a`              | am pm            |                                       |
 | `Do`             | 1st 2nd … 31st   | Day of Month with ordinal             |
 
-表 3— 自由定义日期格式
+表 3： 自由定义日期格式
 
 </div>
 
@@ -204,7 +224,7 @@ boxplot(1:100)
 ````
 
 <img src="Quarto基础_files/figure-commonmark/fig-箱型图-1.png"
-id="fig-箱型图" alt="图 1— 1到100的箱型图" />
+id="readmefig-箱型图" alt="图 1： 1到100的箱型图" />
 
 ## 代码块图片输出设置
 
@@ -236,7 +256,7 @@ ggplot(mpg, aes(x = hwy, y = cty, color = cyl)) +
 ````
 
 <img src="Quarto基础_files/figure-commonmark/fig-散点图-1.png"
-id="fig-散点图" alt="图 2— 38种流行车型的城市和高速公路里程" />
+id="readmefig-散点图" alt="图 2： 38种流行车型的城市和高速公路里程" />
 
 ### 代码块组图输出设置
 
@@ -259,10 +279,10 @@ plot(pressure)
 ````
 
 <img src="Quarto基础_files/figure-commonmark/fig-组图输出-1.png"
-id="fig-组图输出-1" alt="图 3— 车辆的速度和停车距离" />
+id="readmefig-组图输出-1" alt="图 3： 车辆的速度和停车距离" />
 
 <img src="Quarto基础_files/figure-commonmark/fig-组图输出-2.png"
-id="fig-组图输出-2" alt="图 4— 汽压与温度的关系" />
+id="readmefig-组图输出-2" alt="图 4： 汽压与温度的关系" />
 
 `fig-subcap`：每张图以小标题进行标注，如”*(a) sub caption”*、“*(b) sub
 caption”*。效果如下所示：
@@ -283,10 +303,10 @@ plot(pressure)
 ````
 
 <img src="Quarto基础_files/figure-commonmark/fig-小标题组图输出-1.png"
-id="fig-小标题组图输出-1" alt="图 5— 汽车" />
+id="readmefig-小标题组图输出-1" alt="图 5： 汽车" />
 
 <img src="Quarto基础_files/figure-commonmark/fig-小标题组图输出-2.png"
-id="fig-小标题组图输出-2" alt="图 6— 压力" />
+id="readmefig-小标题组图输出-2" alt="图 6： 压力" />
 
 小标题组图输出
 
@@ -314,13 +334,13 @@ plot(mtcars)
 ````
 
 <img src="Quarto基础_files/figure-commonmark/fig-输出复杂排版图片-1.png"
-id="fig-输出复杂排版图片-1" alt="图 7— 汽车" />
+id="readmefig-输出复杂排版图片-1" alt="图 7： 汽车" />
 
 <img src="Quarto基础_files/figure-commonmark/fig-输出复杂排版图片-2.png"
-id="fig-输出复杂排版图片-2" alt="图 8— 压力" />
+id="readmefig-输出复杂排版图片-2" alt="图 8： 压力" />
 
 <img src="Quarto基础_files/figure-commonmark/fig-输出复杂排版图片-3.png"
-id="fig-输出复杂排版图片-3" alt="图 9— mtcars" />
+id="readmefig-输出复杂排版图片-3" alt="图 9： mtcars" />
 
 复杂排版组图输出
 
@@ -345,15 +365,15 @@ plot(mtcars)
 
 <img
 src="Quarto基础_files/figure-commonmark/fig-输出复杂排版图片2-1.png"
-id="fig-输出复杂排版图片2-1" alt="图 10— 汽车" />
+id="readmefig-输出复杂排版图片2-1" alt="图 10： 汽车" />
 
 <img
 src="Quarto基础_files/figure-commonmark/fig-输出复杂排版图片2-2.png"
-id="fig-输出复杂排版图片2-2" alt="图 11— 压力" />
+id="readmefig-输出复杂排版图片2-2" alt="图 11： 压力" />
 
 <img
 src="Quarto基础_files/figure-commonmark/fig-输出复杂排版图片2-3.png"
-id="fig-输出复杂排版图片2-3" alt="图 12— mtcars" />
+id="readmefig-输出复杂排版图片2-3" alt="图 12： mtcars" />
 
 复杂排版组图输出2
 
@@ -378,15 +398,15 @@ plot(mtcars)
 
 <img
 src="Quarto基础_files/figure-commonmark/fig-输出复杂排版图片3-1.png"
-id="fig-输出复杂排版图片3-1" alt="图 13— 汽车" />
+id="readmefig-输出复杂排版图片3-1" alt="图 13： 汽车" />
 
 <img
 src="Quarto基础_files/figure-commonmark/fig-输出复杂排版图片3-2.png"
-id="fig-输出复杂排版图片3-2" alt="图 14— 压力" />
+id="readmefig-输出复杂排版图片3-2" alt="图 14： 压力" />
 
 <img
 src="Quarto基础_files/figure-commonmark/fig-输出复杂排版图片3-3.png"
-id="fig-输出复杂排版图片3-3" alt="图 15— mtcars" />
+id="readmefig-输出复杂排版图片3-3" alt="图 15： mtcars" />
 
 复杂排版组图输出3
 
@@ -442,7 +462,7 @@ id="fig-输出复杂排版图片3-3" alt="图 15— mtcars" />
 <div id="tbl-设置图表的标题">
 
 <table>
-<caption>表 4— 设置图、表的标题</caption>
+<caption>表 4： 设置图、表的标题</caption>
 <colgroup>
 <col style="width: 14%" />
 <col style="width: 85%" />
@@ -484,7 +504,7 @@ to <code>bottom</code>.<br />
 </tbody>
 </table>
 
-表 4— 设置图、表的标题
+表 4： 设置图、表的标题
 
 </div>
 
@@ -539,13 +559,13 @@ to <code>bottom</code>.<br />
 
 要容纳和排版组图，需要首先建立一个Pandoc Div块（[图 16](#fig-div)）。
 
-<img src="images/截屏2023-11-09%2010.23.28.png" id="fig-div" width="288"
-alt="图 16— 建立Div" />
+<img src="images/截屏2023-11-09%2010.23.28.png" id="readmefig-div"
+width="288" alt="图 16： 建立Div" />
 
 Div块的图像排版基本语法如下：
 
-<img src="images/截屏2023-11-09%2010.38.16.png" id="fig-div_code"
-width="458" alt="图 17— Div块的基本语法" />
+<img src="images/截屏2023-11-09%2010.38.16.png" id="readmefig-div_code"
+width="458" alt="图 17： Div块的基本语法" />
 
 - “{}”内为组图的label、排版设置。
 
@@ -716,21 +736,21 @@ data-fig.extended="false" width="240" /></p>
 </div></td>
 <td style="text-align: center;"><div width="50.4%"
 data-layout-align="center">
-<p><img src="images/截屏2023-11-09%2009.39.13-01-01.png"
+<p><img src="images/截屏2023-11-09%2009.39.13-01.png"
 data-fig.extended="false" width="244" /></p>
 </div></td>
 </tr>
 </tbody>
 </table>
 
-图 18— 交叉引用的设置
+图 18： 交叉引用的设置
 
 </div>
 
 例如下面的图片，可以被引用：[图 19](#fig-elephant) 。
 
-<img src="images/crossref-figure.png" id="fig-elephant" width="290"
-alt="图 19— Example for cross reference" />
+<img src="images/crossref-figure.png" id="readmefig-elephant"
+width="290" alt="图 19： Example for cross reference" />
 
 ### 组图的交叉引用
 
@@ -751,21 +771,21 @@ alt="图 19— Example for cross reference" />
 <tr class="odd">
 <td style="text-align: center;"><div width="42.9%"
 data-layout-align="center">
-<p><img src="images/crossref-figure.png" id="fig-组图_素描大象"
+<p><img src="images/crossref-figure.png" id="readmefig-组图_素描大象"
 data-ref-parent="fig-组图的交叉引用" data-fig.extended="false"
 width="219" alt="(A) 素描大象" /></p>
 </div></td>
 <td style="text-align: center;"><div width="57.1%"
 data-layout-align="center">
 <p><img src="images/截屏2023-11-09%2015.02.31.png"
-id="fig-组图-油画大象" data-ref-parent="fig-组图的交叉引用"
+id="readmefig-组图-油画大象" data-ref-parent="fig-组图的交叉引用"
 data-fig.extended="false" width="292" alt="(B) 油画大象" /></p>
 </div></td>
 </tr>
 </tbody>
 </table>
 
-图 20— 组图的交叉引用
+图 20： 组图的交叉引用
 
 </div>
 
@@ -788,7 +808,7 @@ data-fig.extended="false" width="292" alt="(B) 油画大象" /></p>
 | E    | F    | G    |
 | A    | G    | G    |
 
-表 5— 表格的交叉引用示例
+表 5： 表格的交叉引用示例
 
 </div>
 
@@ -823,7 +843,7 @@ kable(head(iris))
 |          5.0 |         3.6 |          1.4 |         0.2 | setosa  |
 |          5.4 |         3.9 |          1.7 |         0.4 | setosa  |
 
-表 6— Iris数据
+表 6： Iris数据
 
 </div>
 
@@ -880,13 +900,15 @@ crossref:
 
 在插入菜单中选择”Citation”：
 
-<img src="images/截屏2023-11-09%2022.02.13.png" id="fig-参考文献的引用"
-width="231" alt="图 21— 参考文献的引用" />
+<img src="images/截屏2023-11-09%2022.02.13.png"
+id="readmefig-参考文献的引用" width="231"
+alt="图 21： 参考文献的引用" />
 
 然后通过DOI或标题检索参考文献，选择目标文献：
 
-<img src="images/截屏2023-11-09%2022.02.44.png" id="fig-参考文献的选择"
-width="539" alt="图 22— 参考文献的选择" />
+<img src="images/截屏2023-11-09%2022.02.44.png"
+id="readmefig-参考文献的选择" width="539"
+alt="图 22： 参考文献的选择" />
 
 现在就会出现参考文献的交叉引用，如： (Fujii et al. 2023)
 。并且会在文档最后生成参考文献列表，同时YAML中会新增参考文献的配置选项：`bibliography: references.bib`。同时根目录下会生成一个名为”references.bib”的参考文献配置文件。
@@ -900,7 +922,7 @@ citation-location: margin
 ```
 
 可用的值参见 [表 4](#tbl-设置图表的标题)
-。这份文档的参考文献就设置为了在页面右侧（margin）展示。
+。这份文档的参考文献就设置为了在页面最后展示（`citation-location: document`）。
 
 <div>
 
@@ -1085,6 +1107,27 @@ number-depth: 3
 
 - link-external-newwindow：是否在新标签页打开外部链接。
 
+## GitHub Flavored Markdown（GFM）格式输出
+
+我们可以将Quarto文档转换为GitHub风格的Markdown文档（GitHub Flavored
+Markdown，GFM）。这可以用来生成GitHub项目的README.md文档。比如我这里直接将这个Quarto文档教程完整转换成了GitHub风格的markdown文件：
+
+``` r
+---
+title: "My Project"
+format: 
+  gfm:
+    identifier-prefix: readme # 标识符
+    # preview-mode: raw # 查看原始markdown
+    keep-yaml: true
+    toc: true
+    toc-depth: 1
+    number-sections: true
+    citation-location: document
+    output-file: "README.md" # 输出文档的文件名
+---
+```
+
 ## PDF输出
 
 如果要在rmarkdown、bookdown中使用PDF输出功能，
@@ -1115,6 +1158,68 @@ tinytex::is_tinytex()
 当用户使用RMarkdown和tinytex包转换latex并编译为PDF时，
 如果缺少某些latex宏包， tinytex会自动安装缺少的宏包。
 
+# 发布到GitHub Pages
+
+我们可以将我们的Quarto文档编译的HTML文档发布到GitHub
+Pages中形成一个可以被其他人访问的网页。下面是具体实现方法。
+
+1.  在GitHub首页创建一个新的仓库。
+
+    ![](images/截屏2023-11-11%2023.34.04.png)
+
+2.  给这个仓库起个名字。![](images/截屏2023-11-12%2016.11.11.png)
+
+    <div>
+
+    > **Caution**
+    >
+    > 为了使这个项目能够创建网页，仓库的名字的后缀必须是".github.io"。
+
+    </div>
+
+3.  添加仓库的描述，这些描述会被添加到README.md文档中，选择仓库的权限为公开，创建README文件，并选择一个license。
+
+    ![](images/截屏2023-11-11%2023.36.31.png)
+
+4.  现在，我们就可以看到这个仓库就被建立了，我们们勾选的README文档和license文档出现在列表中。然后我们点击设置按钮。
+
+    ![](images/截屏2023-11-11%2023.36.48.png)
+
+5.  点击左侧导航栏的"Pages"选项，然后将我们的GitHub
+    Pages的创建来源选择为根目录。
+
+    ![](images/截屏2023-11-11%2023.37.51.png)
+
+6.  现在我们就可以开始上传文件了。
+
+    ![](images/截屏2023-11-11%2023.46.08.png)
+
+7.  需要上传的的文件至少应该包括包括一个HTML文件（文件名为index.html）和一个HTML的资源文件夹（一般我们在Quarto中编译后为一个名称为"\_files”的文件夹）
+
+    ![](images/截屏2023-11-12%2016.24.38.png)
+
+    <div>
+
+    > **Caution**
+    >
+    > - HTML文件的文件名必须为index.html，这样GItHub
+    >   Pages才能识别这是一个用于构建网页的HTML文件。
+    >
+    > - 用Quarto编译HTML文件后，会在根目录生成一个文件名为为"Quarto文档的文件_files”的文件夹，这个就是HTML的资源文件。
+
+    </div>
+
+8.  上传完文件等待一段时间后，就可以在pages的设置页面看到我们的网站已经就绪了。
+
+    ![](images/截屏2023-11-11%2023.49.59-01.png)
+
+9.  点击这个网址即可访问我们建立的网页。
+
+    ![](images/截屏2023-11-11%2023.56.01.png)
+
+10. 下一步我们可以通过 [章节 10.2](#sec-github-markdown)
+    中的方法来创建一个更详细的README文件，这个文件最终会展示在GitHub仓库的首页上。我这里直接将这个完整的教程转换成了GitHub风格的markdown文件。
+
 <div id="refs" class="references csl-bib-body hanging-indent">
 
 <div id="ref-fujii2023a" class="csl-entry">
@@ -1128,5 +1233,3 @@ Report.” *International Journal of Emergency Medicine* 16 (1).
 </div>
 
 </div>
-=======
->>>>>>> efc2c8a962ece806dd2a09f2c2b8d64c56e2964d
